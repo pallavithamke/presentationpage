@@ -1,0 +1,47 @@
+
+    <div class=" text-center loginpage" >
+        <div class="col-sm-6 col-sm-offset-3  loginpage">
+           <h1 style="margin-top: 100px;font-size: 57px;">Company</h1>
+         <p style=" font-size: 19px;margin-top: 25px;">We specialize in blablabla</p>
+
+
+        <form name="myform" class="form-horizontal" >
+
+            <div class="form-group ">
+                <div  ng-class="{ 'has-error':  myform.username.$touched &&  myform.username.$invalid }">
+                    <label class="col-sm-3 control-label">Mobile</label>
+                    <div class="col-sm-8" style="height: 45px">
+                        <input type="text" class="form-control" ng-model="username" name="username" placeholder="username" required ng-minlength="1"
+                               ng-maxlength="10">
+                        <div ng-messages="myform.username.$error"  ng-if=" myform.username.$touched " >
+                            <p ng-message="minlength"  style="color: red;margin-top: 10px;">Your mobile is invalid.</p>
+                            <p ng-message="maxlength" style=": red;margin-top: 10px;  ">Your mobile is invalid.</p>
+                            <p ng-message="required" style="color: red;margin-top: 10px;">Your name is required.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div  ng-class="{ 'has-error':  myform.password.$touched &&  myform.password.$invalid }">
+                    <label class="col-sm-3 control-label">Password</label>
+                    <div class="col-sm-8" style="height: 45px">
+                        <input type="password" class="form-control" ng-model="password" name="password" required ng-minlength="2"
+                               ng-maxlength="10" placeholder="password">
+
+                        <div ng-messages="myform.password.$error"  ng-if=" myform.password.$touched " >
+                            <p ng-message="minlength"  style="color: red;margin-top: 10px;">Your password is too short.</p>
+                            <p ng-message="maxlength" style="color: red;margin-top: 10px;">Your password is too long.</p>
+                            <p ng-message="required" style="color: red;margin-top: 10px;">Your password is required.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group" style=" margin-right: -51px;">
+                <button type="submit" class="btn btn-info col-sm-offset-9"  ng-disabled="myform.$invalid"style="margin-bottom: 17px" ng-click="login()">Login</button>
+            </div>
+
+        </form>
+        </div>
+
+   </div>
+
