@@ -1,8 +1,4 @@
-(function() {
-    "use strict";
-
-
-    var app = angular.module("myapp", ["ui.router", "ngTable",'ngMessages']);
+var app = angular.module("myapp", ["ui.router", "ngTable",'ngMessages']);
 app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/login');
     $stateProvider
@@ -30,24 +26,19 @@ app.controller('loginController', function($scope, $location) {
         } else {
 
             console.log('Login failed..');
+            $location.path('/login');
 
         }
 
     };
 });
-app.controller("demoController", demoController);
-
-demoController.$inject = ["NgTableParams"];
-
-function demoController(NgTableParams) {
-    debugger;
-    this.simpleList =  [
+app.controller("demoController", function ($scope) {
+    $scope.users = [
         { name: "Madhav Sai", age: 10, location: 'Nagpur' },
         { name: "Suresh Dasari", age: 30, location: 'Chennai' },
         { name: "Rohini Alavala", age: 29, location: 'Chennai' },
         { name: "Praveen Kumar", age: 25, location: 'Bangalore' },
         { name: "Sateesh Chandra", age: 27, location: 'Vizag' },
-        { name: "Siva Prasad", age: 38, location: 'Nagpur' },
         { name: "Sudheer Rayana", age: 25, location: 'Kakinada' },
         { name: "Honey Yemineni", age: 7, location: 'Nagpur' },
         { name: "Mahendra Dasari", age: 22, location: 'Vijayawada' },
@@ -57,18 +48,16 @@ function demoController(NgTableParams) {
         { name: "Sudheer Uppala", age: 19, location: 'Guntur' },
         { name: "Sushmita", age: 27, location: 'Vizag' }
     ];
+    $scope.orderByMe = function(user) {
+        $scope.myOrderBy = user;
+    }
+});
 
-
-    this.tableParams = new NgTableParams({
-        // initial sort order
-        sorting: { name: "asc" }
-    }, {
-        dataset: this.simpleList
-    });
-}
-
-
-
-})();
-
+app.directive('headerDirective',function () {
+    return{
+        restrict:'AEC',
+        templateUrl:'views/navbar.html',
+        replace:'true'
+    } ;
+});
 

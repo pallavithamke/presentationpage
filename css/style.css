@@ -1,4 +1,9 @@
 .loginpage{
     background-color: aliceblue;
-    min-height : 600px
+    min-height : 600px;
+    margin-top: -19px;
+}
+.lognavbar{
+    font-size: x-large;
+    color: white;
 }
